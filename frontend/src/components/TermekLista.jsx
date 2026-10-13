@@ -12,14 +12,19 @@ const api = axios.create({
 
 export default function TermekLista() {
   const [termekek, setTermekek] = useState([]);
+  const [hiba, setHiba] = useState('');
 
   useEffect(() => {
     const fetchTermekek = async () => {
       try {
         const response = await api.get('/termekek');
+        if (!Array.isArray(response.data)) {
+          throw new Error('A termékek API nem listát adott vissza.');
+        }
         setTermekek(response.data);
       } catch (error) {
         console.error('Hiba a termékek lekérésekor:', error);
+        setHiba('A termékek betöltése nem sikerült. Ellenőrizd, hogy a backend fut-e.');
       }
     };
 
@@ -29,16 +34,16 @@ export default function TermekLista() {
   return (
     <div>
       <h2>Termékek</h2>
+      {hiba && <p role="alert">{hiba}</p>}
       <ul>
-        {
-          termekek.map((termek) => (
-            <li key={termek.id}>
-              <h3>{termek.nev}</h3>
-              <p>Ár: {termek.ar} Ft</p>
-              <p>Készlet: {termek.keszlet}</p>
-            </li>
-          ))
-        }
+        {termekek.length === 0 && !hiba && <li>Nincsenek megjeleníthető termékek.</li>}
+        {termekek.map((termek) => (
+          <li key={termek.id}>
+            <h3>{termek.nev}</h3>
+            <p>Ár: {termek.ar} Ft</p>
+            <p>Készlet: {termek.keszlet}</p>
+          </li>
+        ))}
       </ul>
     </div>
   );
