@@ -1,0 +1,77 @@
+.user-form {
+  max-width: 32rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #1f2937;
+  text-align: left;
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 15%);
+}
+
+.user-form h2 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.user-form form {
+  display: grid;
+  gap: 1rem;
+}
+
+.user-form__field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.user-form__field label,
+.user-form__checkbox {
+  font-weight: 600;
+}
+
+.user-form__field input,
+.user-form__field select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #9ca3af;
+  border-radius: 0.35rem;
+  font: inherit;
+}
+
+.user-form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-form button {
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: #075985;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.user-form button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.user-form__status,
+.user-form__error,
+.user-form__success {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.user-form__error {
+  color: #b91c1c;
+}
+
+.user-form__success {
+  color: #15803d;
+}
